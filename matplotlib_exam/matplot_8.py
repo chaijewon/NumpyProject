@@ -84,7 +84,7 @@ metro_get_off=metro_get_off.set_index('지하철역')
 print("========================= 하차 인원 ====================")
 print(metro_get_off)
 # 역별로 평균 승하차 인원 => 데이터 프레임 => 시각화
-df=pd.DataFrame(index=metro_st_line2['지하철역'])
+df=pd.DatdaFrame(index=metro_st_line2['지하철역'])
 print(df)
 df['평균 승차 인원수']=metro_get_on.mean(axis=1).astype(int)
 df['평균 하차 인원수']=metro_get_off.mean(axis=1).astype(int)
@@ -99,7 +99,6 @@ plt.bar(top10_on.index,top10_on['평균 승차 인원수'])
 plt.title('2024년 3월 2호선 승차인원 Top10')
 plt.show()
 """
-
 top10_off=df.sort_values(by='평균 하차 인원수',ascending=False).head(10)
 """
 plt.figure(figsize=(20,10))
@@ -109,9 +108,11 @@ plt.bar(top10_off.index,top10_off['평균 하차 인원수'])
 plt.title('2024년 3월 2호선 하차인원 Top10')
 plt.show()
 """
-# 위치 좌표 => 주소 => 지도에 마커
+# 위치 좌표 => 주소 => 지 도에 마커
 # ccty
-
+import folium
+map_osm=folium.Map(location=[37.55686353,126.923765],zoom_start=13)
+map_osm.show_in_browser()
 
 
 
